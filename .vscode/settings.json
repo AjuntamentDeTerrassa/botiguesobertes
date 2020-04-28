@@ -1,0 +1,12 @@
+{
+  "vetur.completion.autoImport": true,
+  "vetur.format.enable": false,
+  "vetur.validation.style": true,
+  "vetur.grammar.customBlocks": {
+    "page-query": "graphql",
+    "static-query": "graphql"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true
+}

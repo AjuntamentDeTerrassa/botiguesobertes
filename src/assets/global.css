@@ -1,0 +1,24 @@
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 13px !important;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 14px !important;
+  }
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 15px !important;
+  }
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px !important;
+  }
+}
