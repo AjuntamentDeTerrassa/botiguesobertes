@@ -33,6 +33,8 @@ jobs:
       - name: Build
         env:
           BASE_DIR: '/botiguesobertes'
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          SHEET_ID: ${{ secrets.SHEET_ID }}
         run: |
           npm run build
       - name: Deploy
