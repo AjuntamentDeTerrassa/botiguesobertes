@@ -15,6 +15,11 @@ export default function (Vue, { head, isClient, appOptions }) {
     rel: 'stylesheet',
   })
 
+  head.meta.push({
+    name: 'theme-color',
+    content: '#000000',
+  })
+
   if (isClient) {
     let L = require('leaflet')
 

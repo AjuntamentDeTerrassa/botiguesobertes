@@ -47,17 +47,5 @@ module.exports = {
         svgo: [{ removeViewBox: false }],
       },
     },
-    {
-      use: 'gridsome-plugin-manifest',
-      options: {
-        background_color: '#fff',
-        icon_path: './src/favicon.png',
-        name: 'Botigues Obertes Terrassa',
-        short_name: 'botiguesobertes',
-        theme_color: '#000',
-        lang: 'ca',
-        orientation: 'landscape',
-      },
-    },
   ],
 }
