@@ -25,6 +25,8 @@
         <FooterLinks />
       </div>
     </div>
+
+    <Welcome />
   </div>
 </template>
 
@@ -60,9 +62,10 @@ import Map from '../components/Map'
 import LogoBar from '../components/LogoBar'
 import ShopList from '../components/ShopList'
 import FooterLinks from '~/components/FooterLinks'
+import Welcome from '~/components/Welcome'
 
 export default {
-  components: { Map, LogoBar, ShopList, FooterLinks },
+  components: { Map, LogoBar, ShopList, FooterLinks, Welcome },
   data() {
     return {
       client: true,

@@ -14,6 +14,7 @@ export default {
     currentPosition: null,
     mapCenter: null,
     mapObject: null,
+    welcomeSeen: false,
   },
   mutations: {
     setShops(state, shops) {
@@ -46,6 +47,9 @@ export default {
     },
     setMap(state, map) {
       state.mapObject = map
+    },
+    dismissWelcome(state) {
+      state.welcomeSeen = true
     },
   },
   getters: {
