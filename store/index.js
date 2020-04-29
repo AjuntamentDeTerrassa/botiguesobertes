@@ -83,13 +83,10 @@ export default {
       }
       return shops
     },
-    visibleShops: (
-      { mapBounds, mapCenter, selectedShop },
-      { filteredShops }
-    ) => {
+    visibleShops: ({ mapBounds, mapCenter }, { filteredShops }) => {
       if (!mapBounds || !mapCenter) return []
 
-      let list = [...filteredShops]
+      return filteredShops
         .filter((shop) =>
           mapBounds.contains(latLng(shop.coordinates.lat, shop.coordinates.lng))
         )
@@ -98,13 +95,6 @@ export default {
             mapCenter.distanceTo(latLng(a.coordinates.lat, a.coordinates.lng)) -
             mapCenter.distanceTo(latLng(b.coordinates.lat, b.coordinates.lng))
         )
-        .splice(0, 50)
-
-      if (selectedShop && !list.includes(selectedShop)) {
-        return [selectedShop, ...list]
-      } else {
-        return list
-      }
     },
   },
   actions: {

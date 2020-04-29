@@ -1,7 +1,7 @@
 <template>
   <div class="flex-grow overflow-auto bg-gray-200">
-    <div v-if="loaded && shops.length > 0">
-      <ShopListItem v-for="shop in shops" :key="shop.id" :shop="shop">
+    <div v-if="loaded && optimizedList.length > 0">
+      <ShopListItem v-for="shop in optimizedList" :key="shop.id" :shop="shop">
         <ShopCard :shop="shop" />
       </ShopListItem>
     </div>
@@ -25,10 +25,19 @@ export default {
   components: { ShopCard, ShopListItem },
   computed: {
     ...mapState(['loaded', 'selectedShop', 'searchResults']),
-    ...mapGetters({ shops: 'visibleShops' }),
+    ...mapGetters(['visibleShops']),
+    optimizedList() {
+      let list = [...this.visibleShops].splice(0, 20)
+
+      if (this.selectedShop && !list.includes(this.selectedShop)) {
+        return [this.selectedShop, ...list]
+      } else {
+        return list
+      }
+    },
   },
   watch: {
-    shops() {
+    optimizedList() {
       if (!this.selectedShop) {
         this.$el.scrollTo(0, 0)
       }
