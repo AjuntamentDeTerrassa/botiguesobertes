@@ -166,8 +166,7 @@ export default {
     },
   },
   created() {
-    this.bounds = latLngBounds(this.markers.map((marker) => marker.position))
-    this.$store.commit('updateMapBounds', this.bounds)
+    this.updateInitialBounds()
 
     this.$nextTick(() => {
       let mapObject = this.$refs.map.mapObject
@@ -178,7 +177,10 @@ export default {
         this.$store.commit('selectShop', null)
       )
 
-      setTimeout(() => mapObject.invalidateSize(), 400)
+      setTimeout(() => {
+        mapObject.invalidateSize()
+        this.updateInitialBounds()
+      }, 100)
     })
   },
   methods: {
@@ -191,6 +193,10 @@ export default {
           )
         )
       )
+    },
+    updateInitialBounds() {
+      this.bounds = latLngBounds(this.markers.map((marker) => marker.position))
+      this.$store.commit('updateMapBounds', this.bounds)
     },
     closePopUp() {
       this.$nextTick(() => this.$refs.tooltip.mapObject.closePopup())

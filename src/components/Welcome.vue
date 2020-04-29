@@ -22,7 +22,7 @@
           class="mx-auto block rounded-lg text-lg bg-red-600 shadow-md px-4 py-2 my-4 text-white flex"
           @click="dismiss()"
         >
-          <StoreIcon class="fill-current mr-2" /> Explorar les botigues
+          Explorar les botigues
         </button>
       </div>
     </div>
