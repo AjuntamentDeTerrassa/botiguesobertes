@@ -5,7 +5,10 @@
       target="_blank"
       class="px-4 py-2 flex items-center hover:underline"
     >
-      <span class="truncate">Donar-se d'alta</span>
+      <span class="truncate font-bold">
+        <span class="hidden lg:inline">Si no et trobes, dona't d'alta</span>
+        <span class="inline lg:hidden">Dona't d'alta</span>
+      </span>
     </a>
     <a
       href="mailto:comerciants@terrassa.cat"
