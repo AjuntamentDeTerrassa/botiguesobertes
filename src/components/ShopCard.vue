@@ -1,5 +1,5 @@
 <template>
-  <div class="text-gray-800 divide-y divide-gray-200">
+  <div class="text-gray-800">
     <div class="pb-2">
       <div class="text-sm mb-2 uppercase text-gray-500">{{ shop.type }}</div>
       <h2 class="text-xl font-bold leading-tight">
@@ -44,7 +44,7 @@
 
     <div
       v-if="shop.phone || shop.email"
-      class="block lg:block py-4"
+      class="block"
       :class="{ hidden: !expanded }"
     >
       <ul class="leading-relaxed">
