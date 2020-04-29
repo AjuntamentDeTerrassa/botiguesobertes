@@ -9,7 +9,11 @@ export default {
     loaded: false,
     allShops: [],
     mapBounds: null,
-    openStateFilters: ['YES', 'NO', 'PARTIALLY'],
+    filters: {
+      states: ['YES', 'NO', 'PARTIALLY'],
+      types: [],
+    },
+    allTypes: [],
     selectedShop: null,
     currentPosition: null,
     mapCenter: null,
@@ -30,13 +34,11 @@ export default {
     selectShop(state, shop) {
       state.selectedShop = shop
     },
-    toggleOpenStateFilter(state, filter) {
-      if (state.openStateFilters.includes(filter)) {
-        state.openStateFilters = state.openStateFilters.filter(
-          (f) => f != filter
-        )
+    toggleStateFilter({ filters }, filter) {
+      if (filters.states.includes(filter)) {
+        filters.states = filters.states.filter((f) => f != filter)
       } else {
-        state.openStateFilters = [...state.openStateFilters, filter]
+        filters.states = [...filters.states, filter]
       }
     },
     setCurrentPosition(state, position) {
@@ -51,12 +53,20 @@ export default {
     dismissWelcome(state) {
       state.welcomeSeen = true
     },
+    setTypes(state, types) {
+      state.types = types.sort((a, b) => (a.name > b.name ? 1 : -1))
+    },
+    filterByTypes(state, types) {
+      state.filters.types = types
+    },
   },
   getters: {
-    filteredShops: ({ openStateFilters, allShops }) => {
-      return allShops.filter((shop) =>
-        openStateFilters.includes(shop.openState)
-      )
+    filteredShops: ({ filters: { states, types }, allShops }) => {
+      let shops = allShops.filter((shop) => states.includes(shop.openState))
+      if (types.length > 0) {
+        shops = shops.filter((shop) => types.includes(shop.type))
+      }
+      return shops
     },
     visibleShops: (
       { mapBounds, mapCenter, selectedShop },

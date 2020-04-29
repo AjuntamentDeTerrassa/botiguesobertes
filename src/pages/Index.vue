@@ -76,8 +76,16 @@ export default {
   },
   async mounted() {
     let shops = this.$page.allShop.edges.map((edge) => edge.node)
-    await this.$search.addAllAsync(shops)
+    let types = [...new Set(shops.map((shop) => shop.type))].map((type) => ({
+      id: type,
+      name: type,
+    }))
+
+    await this.$shopSearch.addAllAsync(shops)
+    await this.$typeSearch.addAllAsync(types)
+
     this.$store.dispatch('loadShops', shops)
+    this.$store.commit('setTypes', types)
   },
 }
 </script>

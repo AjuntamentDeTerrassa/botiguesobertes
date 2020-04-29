@@ -35,10 +35,18 @@ export default function (Vue, { head, isClient, appOptions }) {
   Vue.use(Vuex)
   appOptions.store = new Vuex.Store(store)
 
-  Vue.prototype.$search = new MiniSearch({
+  Vue.prototype.$shopSearch = new MiniSearch({
     fields: ['name', 'type', 'displayAddress'],
     searchOptions: {
       boost: { title: 10, type: 5, displayAddress: 1 },
+      fuzzy: 0.1,
+      prefix: true,
+    },
+  })
+
+  Vue.prototype.$typeSearch = new MiniSearch({
+    fields: ['name'],
+    searchOptions: {
       fuzzy: 0.1,
       prefix: true,
     },

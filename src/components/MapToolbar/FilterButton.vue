@@ -31,16 +31,16 @@ export default {
   },
   computed: {
     enabled() {
-      return this.openStateFilters.includes(this.filter)
+      return this.filters.states.includes(this.filter)
     },
     color() {
       return openStateStrokeColor(this.filter)
     },
-    ...mapState(['openStateFilters']),
+    ...mapState(['filters']),
   },
   methods: {
     toggle() {
-      this.$store.commit('toggleOpenStateFilter', this.filter)
+      this.$store.commit('toggleStateFilter', this.filter)
     },
   },
 }
