@@ -16,7 +16,7 @@ module.exports = {
 
   pathPrefix: process.env.BASE_DIR || '',
 
-  titleTemplate: `%s | Gridsome`,
+  titleTemplate: `%s`,
 
   plugins: [
     {
