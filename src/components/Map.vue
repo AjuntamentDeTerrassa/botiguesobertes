@@ -69,7 +69,7 @@
           class="flex items-center bg-gray-300 px-4 hover:bg-gray-200 active:bg-gray-100 transition-all duration-300"
           target="_blank"
         >
-          <Logo />
+          <Logo height="1.2em" class="fill-current" width="5em" />
         </a>
       </MapToolbarControlGroup>
     </div>
