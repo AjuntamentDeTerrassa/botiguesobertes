@@ -4,7 +4,7 @@
       ref="map"
       :zoom="12"
       :bounds="bounds.pad(0.1)"
-      :max-bounds="bounds.pad(0.3)"
+      :max-bounds="maxBounds"
       :max-bounds-viscosity="0.99"
       :min-zoom="minZoom"
       :max-zoom="maxZoom"
@@ -43,7 +43,7 @@
         :fill-opacity="0.1"
         color="#0092F6"
         fill-color="#00A6F2"
-        :weight="1"
+        :weight="2"
         :radius="currentPositionMarker.accuracy"
       />
     </l-map>
@@ -119,6 +119,7 @@ export default {
       bounds: null,
       minZoom: 12,
       maxZoom: 18,
+      maxBounds: null,
       url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
       mapOptions: {
         zoomSnap: 0.5,
@@ -164,9 +165,16 @@ export default {
         this.openPopUp()
       }
     },
+    shops() {
+      if (this.shops.length > 0) {
+        this.updateBounds()
+      }
+    },
   },
   created() {
-    this.updateInitialBounds()
+    let bounds = latLngBounds(this.markers.map((marker) => marker.position))
+    this.bounds = bounds
+    this.maxBounds = bounds.pad(0.3)
 
     this.$nextTick(() => {
       let mapObject = this.$refs.map.mapObject
@@ -177,9 +185,11 @@ export default {
         this.$store.commit('selectShop', null)
       )
 
+      this.updateBounds()
+
       setTimeout(() => {
         mapObject.invalidateSize()
-        this.updateInitialBounds()
+        this.updateBounds()
       }, 100)
     })
   },
@@ -194,12 +204,13 @@ export default {
         )
       )
     },
-    updateInitialBounds() {
+    updateBounds() {
       this.bounds = latLngBounds(this.markers.map((marker) => marker.position))
+      this.$refs.map.mapObject.fitBounds(this.bounds)
       this.$store.commit('updateMapBounds', this.bounds)
     },
     closePopUp() {
-      this.$nextTick(() => this.$refs.tooltip.mapObject.closePopup())
+      this.$refs.tooltip.mapObject.closePopup()
     },
     updateMapCenter(position) {
       this.$store.commit('setMapCenter', position)

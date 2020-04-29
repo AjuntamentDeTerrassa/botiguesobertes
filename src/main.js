@@ -33,9 +33,10 @@ export default function (Vue, { head, isClient, appOptions }) {
   }
 
   Vue.use(Vuex)
-  appOptions.store = new Vuex.Store(store)
+  let vuex = new Vuex.Store(store)
+  appOptions.store = vuex
 
-  Vue.prototype.$shopSearch = new MiniSearch({
+  let shopSearch = new MiniSearch({
     fields: ['name', 'type', 'displayAddress'],
     searchOptions: {
       boost: { title: 10, type: 5, displayAddress: 1 },
@@ -43,6 +44,9 @@ export default function (Vue, { head, isClient, appOptions }) {
       prefix: true,
     },
   })
+
+  Vue.prototype.$shopSearch = shopSearch
+  vuex.search = shopSearch
 
   Vue.prototype.$typeSearch = new MiniSearch({
     fields: ['name'],

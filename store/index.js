@@ -19,6 +19,7 @@ export default {
     mapCenter: null,
     mapObject: null,
     welcomeSeen: false,
+    searchResults: null,
   },
   mutations: {
     setShops(state, shops) {
@@ -57,12 +58,26 @@ export default {
       state.types = types.sort((a, b) => (a.name > b.name ? 1 : -1))
     },
     filterByTypes(state, types) {
+      state.searchResults = null
       state.filters.types = types
+    },
+    setSearchResults(state, results) {
+      state.filters.types = []
+      state.searchResults = results
+    },
+    clearSearchResults(state) {
+      state.searchResults = null
     },
   },
   getters: {
-    filteredShops: ({ filters: { states, types }, allShops }) => {
-      let shops = allShops.filter((shop) => states.includes(shop.openState))
+    filteredShops: ({
+      filters: { states, types },
+      allShops,
+      searchResults,
+    }) => {
+      let shops = (searchResults || allShops).filter((shop) =>
+        states.includes(shop.openState)
+      )
       if (types.length > 0) {
         shops = shops.filter((shop) => types.includes(shop.type))
       }
@@ -107,6 +122,15 @@ export default {
     },
     async loadShops({ commit }, shops) {
       commit('setShops', shops)
+    },
+    async search({ commit, state }, query) {
+      let shopResults = this.search.search(query)
+
+      let shops = state.allShops.filter((shop) =>
+        shopResults.map((result) => result.id).includes(shop.id)
+      )
+
+      commit('setSearchResults', shops)
     },
   },
 }

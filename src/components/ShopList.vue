@@ -24,7 +24,7 @@ import ShopListItem from './ShopListItem'
 export default {
   components: { ShopCard, ShopListItem },
   computed: {
-    ...mapState(['loaded', 'selectedShop']),
+    ...mapState(['loaded', 'selectedShop', 'searchResults']),
     ...mapGetters({ shops: 'visibleShops' }),
   },
   watch: {

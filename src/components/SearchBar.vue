@@ -2,18 +2,29 @@
   <div class="relative">
     <div class="flex border-gray-200 border-b-2 items-center">
       <div class="relative flex flex-1">
-        <input
-          v-model="searchText"
-          class="flex-1 p-4 placeholder-gray-500 text-gray-800"
-          placeholder="Busques un comerç en concret?"
-          @input="searchText = $event.target.value"
-          @focus="focused = true"
-          @blur="focused = false"
-        />
-        <SearchIcon
-          class="text-gray-500 fill-current absolute m-4 right-0 top-0 pointer-events-none"
-          :class="{ 'text-gray-800': focused }"
-        />
+        <form
+          ref="searchForm"
+          class="flex flex-1"
+          @submit.prevent="performSearch"
+        >
+          <input
+            v-model="searchText"
+            class="flex-1 p-4 placeholder-gray-500 text-gray-800"
+            placeholder="Busques un comerç en concret?"
+            @input="searchText = $event.target.value"
+          />
+          <ClearIcon
+            v-if="searchResults"
+            class="text-gray-500 fill-current absolute m-4 right-0 top-0 cursor-pointer"
+            :class="{ 'text-gray-800': focused }"
+            @click="clearSearchResults()"
+          />
+          <SearchIcon
+            v-else
+            class="text-gray-500 fill-current absolute m-4 right-0 top-0 pointer-events-none"
+            :class="{ 'text-gray-800': focused }"
+          />
+        </form>
       </div>
       <button class="flex-grow-0 p-4 h-full" @click="toggleFilters()">
         <FilterIcon
@@ -86,6 +97,7 @@
 
 <script>
 import Oval from '~/components/Oval'
+import ClearIcon from 'material-design-icons/content/svg/production/ic_clear_24px.svg'
 import SearchIcon from 'material-design-icons/action/svg/production/ic_search_24px.svg'
 import FilterIcon from 'material-design-icons/content/svg/production/ic_filter_list_24px.svg'
 import { mapState } from 'vuex'
@@ -96,7 +108,7 @@ if (process.isClient) {
 }
 
 export default {
-  components: { SearchIcon, Oval, FilterIcon },
+  components: { SearchIcon, Oval, FilterIcon, ClearIcon },
   data() {
     return {
       searchText: null,
@@ -109,10 +121,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['allShops', 'mapObject', 'filters']),
+    ...mapState(['allShops', 'mapObject', 'filters', 'searchResults']),
     ...mapState({ allTypes: 'types' }),
     showSearch() {
-      return this.searchText
+      return !!this.searchText
     },
   },
   watch: {
@@ -124,6 +136,7 @@ export default {
     selectShop(shop) {
       this.searchText = null
       this.$store.commit('selectShop', shop)
+      this.clearFilters()
       this.$nextTick(() => {
         this.mapObject.flyTo(
           latLng(shop.coordinates.lat, shop.coordinates.lng),
@@ -163,6 +176,14 @@ export default {
     clearFilters() {
       this.showFilters = false
       this.$store.commit('filterByTypes', [])
+    },
+    performSearch() {
+      this.clearFilters()
+      this.$store.dispatch('search', this.searchText)
+      this.searchText = null
+    },
+    clearSearchResults() {
+      this.$store.commit('clearSearchResults')
     },
   },
 }

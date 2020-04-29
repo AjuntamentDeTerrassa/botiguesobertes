@@ -1,16 +1,16 @@
 function openStateColor(openState) {
   return {
-    YES: '#66C87A',
-    PARTIALLY: '#FB8F2B',
-    NO: '#9C9C9C',
+    YES: '#68D391',
+    PARTIALLY: '#F6AD55',
+    NO: '#F687B3',
   }[openState]
 }
 
 function openStateStrokeColor(openState) {
   return {
-    YES: '#00B263',
-    PARTIALLY: '#E28228',
-    NO: '#8B8B8B',
+    YES: '#38A169',
+    PARTIALLY: '#DD6B20',
+    NO: '#D53F8C',
   }[openState]
 }
 
