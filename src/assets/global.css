@@ -22,3 +22,20 @@ html {
     font-size: 16px !important;
   }
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.slidedown-enter-active,
+.slidedown-leave-active {
+  transition: opacity 0.2s, transform 0.2s;
+}
+.slidedown-enter, .slidedown-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  transform: translateY(-10%);
+  opacity: 0;
+}

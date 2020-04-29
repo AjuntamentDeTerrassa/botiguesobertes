@@ -23,60 +23,64 @@
       </button>
     </div>
 
-    <div
-      v-if="showSearch"
-      class="absolute w-full bg-white shadow-md z-50 divide-y divide-gray-100"
-    >
-      <ul v-if="searchTypes.length > 0" class="py-4">
-        <li v-for="type in searchTypes" :key="type.id">
-          <a
-            href="#"
-            class="flex px-4 py-1 items-center hover:bg-gray-100 transition-colors duration-100"
-            @click="selectType(type)"
-          >
-            <span class="pl-2">{{ type.id }}</span>
-          </a>
-        </li>
-      </ul>
-      <ul v-if="shops.length > 0" class="py-4">
-        <li v-for="shop in shops" :key="shop.id">
-          <a
-            href="#"
-            class="flex px-4 py-1 items-center hover:bg-gray-100 transition-colors duration-100"
-            @click="selectShop(shop)"
-          >
-            <Oval :shop="shop" />
-            <span class="pl-2">{{ shop.name }}</span>
-          </a>
-        </li>
-      </ul>
-      <div v-else class="p-4">No s'ha trobat resultats</div>
-    </div>
-    <div
-      v-else-if="showFilters"
-      class="absolute w-full bg-white shadow-md z-50 divide-y divide-gray-100 p-4"
-      style="max-height: 70vh;"
-    >
-      <div class="flex flex-col h-full">
-        <ul class="overflow-auto h-64">
-          <li v-for="type in allTypes" :key="type.id">
-            <label class="flex items-center">
-              <input v-model="tempTypes" type="checkbox" :value="type.id" />
-              <span class="pl-2">{{ type.name }}</span>
-            </label>
+    <transition name="slidedown">
+      <div
+        v-if="showSearch"
+        class="absolute w-full bg-white shadow-md z-50 divide-y divide-gray-100"
+      >
+        <ul v-if="searchTypes.length > 0" class="py-4">
+          <li v-for="type in searchTypes" :key="type.id">
+            <a
+              href="#"
+              class="flex px-4 py-1 items-center hover:bg-gray-100 transition-colors duration-100"
+              @click="selectType(type)"
+            >
+              <span class="pl-2">{{ type.id }}</span>
+            </a>
           </li>
         </ul>
-        <div class="flex-1 pt-4 flex justify-between">
-          <button @click="clearFilters()">Esborrar filtres</button>
-          <button
-            class="py-2 px-4 bg-gray-100 shadow-md rounded-md transition-all duration-100 hover:bg-gray-200"
-            @click="filter()"
-          >
-            Filtrar
-          </button>
+        <ul v-if="shops.length > 0" class="py-4">
+          <li v-for="shop in shops" :key="shop.id">
+            <a
+              href="#"
+              class="flex px-4 py-1 items-center hover:bg-gray-100 transition-colors duration-100"
+              @click="selectShop(shop)"
+            >
+              <Oval :shop="shop" />
+              <span class="pl-2">{{ shop.name }}</span>
+            </a>
+          </li>
+        </ul>
+        <div v-else class="p-4">No s'ha trobat resultats</div>
+      </div>
+    </transition>
+    <transition name="slidedown">
+      <div
+        v-if="showFilters"
+        class="absolute w-full bg-white shadow-md z-50 divide-y divide-gray-100 p-4"
+        style="max-height: 70vh;"
+      >
+        <div class="flex flex-col h-full">
+          <ul class="overflow-auto h-64">
+            <li v-for="type in allTypes" :key="type.id">
+              <label class="flex items-center">
+                <input v-model="tempTypes" type="checkbox" :value="type.id" />
+                <span class="pl-2">{{ type.name }}</span>
+              </label>
+            </li>
+          </ul>
+          <div class="flex-1 pt-4 flex justify-between">
+            <button @click="clearFilters()">Esborrar filtres</button>
+            <button
+              class="py-2 px-4 bg-gray-100 shadow-md rounded-md transition-all duration-100 hover:bg-gray-200"
+              @click="filter()"
+            >
+              Filtrar
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
