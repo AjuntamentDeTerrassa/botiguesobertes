@@ -83,7 +83,7 @@ export default {
             mapCenter.distanceTo(latLng(a.coordinates.lat, a.coordinates.lng)) -
             mapCenter.distanceTo(latLng(b.coordinates.lat, b.coordinates.lng))
         )
-        .splice(0, 10)
+        .splice(0, 50)
 
       if (selectedShop && !list.includes(selectedShop)) {
         return [selectedShop, ...list]
