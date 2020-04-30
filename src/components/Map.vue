@@ -220,7 +220,6 @@ export default {
           this.markers.map((marker) => marker.position)
         )
         this.$refs.map.mapObject.fitBounds(this.bounds)
-        console.log('Fit bounds')
         this.$refs.map.mapObject.invalidateSize()
         this.$store.commit('updateMapBounds', this.bounds)
       }
