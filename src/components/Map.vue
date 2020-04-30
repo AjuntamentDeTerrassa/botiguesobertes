@@ -66,7 +66,7 @@
         <FooterLinks />
         <a
           href="https://www.terrassa.cat"
-          class="flex items-center bg-gray-300 px-4 hover:bg-gray-200 active:bg-gray-100 transition-all duration-300"
+          class="flex items-center bg-red-600 text-white px-4 hover:bg-red-500 active:bg-red-600 transition-all duration-300"
           target="_blank"
         >
           <Logo height="1.2em" class="fill-current" width="5em" />

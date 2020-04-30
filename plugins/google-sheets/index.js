@@ -36,7 +36,7 @@ let stateMappings = {
 
 function normalizeShop(shop) {
   return {
-    address: shop['Adreça Real'] || shop['Adreça del local (Carrer i número)'],
+    address: shop['Adreça del local (Carrer i número)'],
     displayAddress: shop['Adreça del local (Carrer i número)'],
     postalCode:
       shop["Districte: (en cas de no conèixe'l, indicar codi postal)"],

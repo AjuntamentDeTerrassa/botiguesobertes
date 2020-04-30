@@ -6,7 +6,9 @@
       style="background-color: rgba(0, 0, 0, 0.2);"
     >
       <div class="bg-white shadow-lg rounded-lg max-w-2xl m-4 p-16">
-        <Logo class="w-56 h-20 mx-auto mb-4" />
+        <Logo
+          class="w-64 h-24 mx-auto mb-4 px-6 bg-red-600 rounded-lg text-white fill-current"
+        />
         <div class="text-lg pt-2">
           A través d'aquest portal posem a la teva disposició la informació
           relativa de totes les botigues i establiments de la nostra ciutat
@@ -19,7 +21,7 @@
         </div>
 
         <button
-          class="mx-auto block rounded-lg text-lg bg-red-600 shadow-md px-4 py-2 mt-8 text-white flex"
+          class="mx-auto block rounded-lg text-lg bg-gray-200 text-gray-800 hover:bg-gray-100 transition-colors duration-200 active:bg-gray-200 shadow-md px-4 py-2 mt-8 flex"
           @click="dismiss()"
         >
           Explorar les botigues
