@@ -160,8 +160,11 @@ export default {
       'mapObject',
       'searchResults',
     ]),
-    ...mapState({ typeFilters: ['filters', 'types'] }),
+    ...mapState(['filters']),
     ...mapGetters({ shops: 'filteredShops' }),
+    typeFilters() {
+      return this.filters.types
+    },
   },
   watch: {
     selectedShop(shop) {
@@ -172,6 +175,7 @@ export default {
       }
     },
     typeFilters() {
+      console.log('Filters changed')
       this.$nextTick(() => this.updateBounds())
     },
     searchResults() {
@@ -217,6 +221,7 @@ export default {
           this.markers.map((marker) => marker.position)
         )
         this.$refs.map.mapObject.fitBounds(this.bounds)
+        console.log('Fit bounds')
         this.$refs.map.mapObject.invalidateSize()
         this.$store.commit('updateMapBounds', this.bounds)
       }
