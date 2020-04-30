@@ -63,9 +63,11 @@ export default {
     },
     setSearchResults(state, results) {
       state.filters.types = []
+      state.selectedShop = null
       state.searchResults = results
     },
     clearSearchResults(state) {
+      state.selectedShop = null
       state.searchResults = null
     },
   },

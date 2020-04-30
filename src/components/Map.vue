@@ -175,7 +175,6 @@ export default {
       }
     },
     typeFilters() {
-      console.log('Filters changed')
       this.$nextTick(() => this.updateBounds())
     },
     searchResults() {

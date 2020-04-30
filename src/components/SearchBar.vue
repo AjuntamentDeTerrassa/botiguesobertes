@@ -83,7 +83,7 @@
           <div class="flex-1 pt-4 flex justify-between">
             <button @click="clearFilters()">Esborrar filtres</button>
             <button
-              class="py-2 px-4 bg-gray-100 shadow-md rounded-md transition-all duration-100 hover:bg-gray-200"
+              class="py-2 px-4 bg-red-600 text-white shadow-md rounded-md transition-all duration-100 hover:bg-red-500"
               @click="filter()"
             >
               Filtrar
