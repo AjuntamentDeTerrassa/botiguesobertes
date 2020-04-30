@@ -154,7 +154,13 @@ export default {
         position: latLng(latitude, longitude),
       }
     },
-    ...mapState(['selectedShop', 'currentPosition', 'mapObject']),
+    ...mapState([
+      'selectedShop',
+      'currentPosition',
+      'mapObject',
+      'searchResults',
+    ]),
+    ...mapState({ typeFilters: ['filters', 'types'] }),
     ...mapGetters({ shops: 'filteredShops' }),
   },
   watch: {
@@ -165,10 +171,11 @@ export default {
         this.openPopUp()
       }
     },
-    shops() {
-      if (this.shops.length > 0) {
-        this.updateBounds()
-      }
+    typeFilters() {
+      this.updateBounds()
+    },
+    searchResults() {
+      this.updateBounds()
     },
   },
   created() {
@@ -190,7 +197,7 @@ export default {
       setTimeout(() => {
         mapObject.invalidateSize()
         this.updateBounds()
-      }, 100)
+      }, 500)
     })
   },
   methods: {
@@ -205,9 +212,14 @@ export default {
       )
     },
     updateBounds() {
-      this.bounds = latLngBounds(this.markers.map((marker) => marker.position))
-      this.$refs.map.mapObject.fitBounds(this.bounds)
-      this.$store.commit('updateMapBounds', this.bounds)
+      if (this.shops && this.shops.length > 0) {
+        this.bounds = latLngBounds(
+          this.markers.map((marker) => marker.position)
+        )
+        this.$refs.map.mapObject.fitBounds(this.bounds)
+        this.$refs.map.mapObject.invalidateSize()
+        this.$store.commit('updateMapBounds', this.bounds)
+      }
     },
     closePopUp() {
       this.$refs.tooltip.mapObject.closePopup()
