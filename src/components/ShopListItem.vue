@@ -35,17 +35,20 @@ export default {
       if (this.selected) this.scroll()
     },
   },
+  mounted() {
+    if (this.selected) {
+      this.scroll()
+    }
+  },
   methods: {
     selectShop(shop) {
       this.$store.commit('selectShop', shop)
     },
     scroll() {
-      this.$nextTick(() =>
-        this.$el.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-        })
-      )
+      this.$el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      })
     },
   },
 }
