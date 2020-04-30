@@ -172,10 +172,10 @@ export default {
       }
     },
     typeFilters() {
-      this.updateBounds()
+      this.$nextTick(() => this.updateBounds())
     },
     searchResults() {
-      this.updateBounds()
+      this.$nextTick(() => this.updateBounds())
     },
   },
   created() {
