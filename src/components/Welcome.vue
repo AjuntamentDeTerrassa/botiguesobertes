@@ -33,6 +33,7 @@
           >
             Explorar les botigues
           </button>
+          <div class="text-center text-red-600 mt-2 text-sm">(versió beta)</div>
         </div>
       </div>
     </div>
