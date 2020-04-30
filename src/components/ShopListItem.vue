@@ -40,10 +40,12 @@ export default {
       this.$store.commit('selectShop', shop)
     },
     scroll() {
-      this.$el.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      })
+      this.$nextTick(() =>
+        this.$el.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        })
+      )
     },
   },
 }
