@@ -101,6 +101,7 @@ class GoogleSheetSource {
             options: {
               path: options.cachePath,
               ttl: 60 * 60 * 365,
+              maxSize: 1000 * 1000 * 1000,
             },
           })
 
