@@ -7,7 +7,8 @@
       <div
         class="bg-black px-4 flex-grow flex items-center text-white text-xl font-semibold"
       >
-        <span>Botigues Obertes</span>
+        <span>Botigues Obertes</span
+        ><span class="text-red-600 text-sm pl-2">versió beta</span>
       </div>
     </g-link>
     <SearchBar />
