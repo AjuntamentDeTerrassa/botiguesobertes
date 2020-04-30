@@ -15,7 +15,7 @@
           />
         </div>
         <div class="p-16 pt-0">
-          <div class="pl-32 sm:pl-40 lg:pl-48 pt-6">
+          <div class="pl-12 sm:pl-40 lg:pl-48 pt-6">
             <div class="text-lg pt-2">
               A través d'aquest portal posem a la teva disposició la informació
               relativa de totes les botigues i establiments de la nostra ciutat

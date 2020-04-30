@@ -2,10 +2,12 @@
 <template>
   <MapToolbarControlGroup class="mr-2">
     <MapToolbarFilterButton filter="YES" class="truncate">
-      Horari habitual
+      <span class="hidden md:inline">Horari habitual</span>
+      <span class="md:hidden">Hor. habitual</span>
     </MapToolbarFilterButton>
     <MapToolbarFilterButton filter="PARTIALLY" class="truncate">
-      Amb alteracions
+      <span class="hidden md:inline">Amb alteracions</span>
+      <span class="md:hidden">Alteracions</span>
     </MapToolbarFilterButton>
     <MapToolbarFilterButton filter="NO" class="truncate">
       Tancat
