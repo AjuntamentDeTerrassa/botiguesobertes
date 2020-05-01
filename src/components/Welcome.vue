@@ -7,7 +7,7 @@
     >
       <div
         class="bg-white shadow-lg rounded-lg max-w-2xl m-4 overflow-hidden bg-cover bg-center"
-        :style="`background-image: url(${womanUrl})`"
+        :style="`background-image: linear-gradient(to right, rgba(255,255,255,0.3) , rgba(255,255,255,1)), url(${womanUrl})`"
       >
         <div class="bg-red-600 mb-8 rounded-b-md w-64 mx-auto">
           <Logo
@@ -15,7 +15,7 @@
           />
         </div>
         <div class="p-16 pt-0">
-          <div class="pl-12 sm:pl-40 lg:pl-48 pt-6">
+          <div class="sm:pl-40 lg:pl-48 pt-6">
             <div class="text-lg pt-2">
               A través d'aquest portal posem a la teva disposició la informació
               relativa de totes les botigues i establiments de la nostra ciutat
