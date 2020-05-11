@@ -2,7 +2,7 @@
   <div class="text-gray-800">
     <div class="pb-2">
       <div class="text-sm mb-2 uppercase text-gray-500">{{ shop.type }}</div>
-      <h2 class="text-xl font-bold leading-tight">
+      <h2 class="text-xl font-semibold leading-tight">
         <a href="#" class="text-gray-900">
           {{ shop.name }}
         </a>

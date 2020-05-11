@@ -5,7 +5,7 @@
       target="_blank"
       class="px-4 py-2 flex items-center hover:underline"
     >
-      <span class="truncate font-bold">
+      <span class="truncate font-semibold">
         <span class="hidden lg:inline">Si no et trobes, dona't d'alta</span>
         <span class="inline lg:hidden">Dona't d'alta</span>
       </span>

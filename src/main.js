@@ -11,13 +11,13 @@ require('leaflet/dist/leaflet.css')
 export default function (Vue, { head, isClient, appOptions }) {
   head.link.push({
     href:
-      'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap',
+      'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;900&display=swap',
     rel: 'stylesheet',
   })
 
   head.meta.push({
     name: 'theme-color',
-    content: '#000000',
+    content: '#e53e3e',
   })
 
   if (isClient) {

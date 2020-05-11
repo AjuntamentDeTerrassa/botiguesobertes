@@ -24,7 +24,7 @@
             </div>
             <div class="text-lg py-4">
               Perquè les botigues de Terrassa
-              <span class="font-bold">ens agraden</span>.
+              <span class="font-semibold">ens agraden</span>.
             </div>
           </div>
           <button
@@ -33,7 +33,6 @@
           >
             Explorar les botigues
           </button>
-          <div class="text-center text-red-600 mt-2 text-sm">(versió beta)</div>
         </div>
       </div>
     </div>

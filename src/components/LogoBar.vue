@@ -1,13 +1,16 @@
 <template>
   <div>
-    <g-link to="/" class="flex bg-black">
-      <span class="bg-red-600 px-2 rounded-r-lg"
-        ><Shield height="4em" width="4em"
-      /></span>
+    <g-link
+      to="/"
+      class="flex logo-bar justify-end px-4 border-red-600 border-t-8"
+    >
       <div
-        class="bg-black px-4 flex-grow flex items-center text-white text-xl font-semibold"
+        class="flex items-center my-2 lg:my-4 text-black text-2xl text-center lg:text-left font-semibold w-2/5 leading-none"
       >
-        <span>Botigues Obertes</span>
+        <span class="pl-4 font-black text-red-600">
+          Botigues <br />
+          Obertes
+        </span>
       </div>
     </g-link>
     <SearchBar />
@@ -15,10 +18,17 @@
 </template>
 
 <script>
-import Shield from '../assets/shield.svg'
 import SearchBar from '~/components/SearchBar'
 
 export default {
-  components: { Shield, SearchBar },
+  components: { SearchBar },
 }
 </script>
+
+<style scoped>
+.logo-bar {
+  background: url(../assets/top.jpg);
+  background-size: cover;
+  background-position: center;
+}
+</style>
