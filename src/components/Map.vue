@@ -24,18 +24,22 @@
         </l-popup>
       </l-feature-group>
 
-      <l-circle-marker
-        v-for="marker in markers"
-        :key="marker.id"
-        :radius="marker.selected ? 12 : 8"
-        :stroke="true"
-        :lat-lng="marker.position"
-        :fill-opacity="1.0"
-        :fill-color="marker.color"
-        :color="marker.strokeColor"
-        :weight="2"
-        @click="toggleShop(marker.shop)"
-      />
+      <VMarkerCluster
+        :options="{ showCoverageOnHover: false, maxClusterRadius: 80 }"
+      >
+        <l-circle-marker
+          v-for="marker in markers"
+          :key="marker.id"
+          :radius="marker.selected ? 12 : 8"
+          :stroke="true"
+          :lat-lng="marker.position"
+          :fill-opacity="1.0"
+          :fill-color="marker.color"
+          :color="marker.strokeColor"
+          :weight="2"
+          @click="toggleShop(marker.shop)"
+        />
+      </VMarkerCluster>
 
       <l-circle
         v-if="currentPositionMarker"
@@ -80,6 +84,7 @@
 import { mapState, mapGetters } from 'vuex'
 import ShopCard from './ShopCard'
 import { shopColor, shopStrokeColor } from '~/utils/colors.js'
+import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
 
 import Logo from '~/assets/logo-full.svg'
 
@@ -112,6 +117,7 @@ export default {
     Logo,
     MapToolbarControlGroup,
     FooterLinks,
+    VMarkerCluster: Vue2LeafletMarkerCluster,
   },
   data() {
     return {
@@ -137,7 +143,6 @@ export default {
         position: latLng(shop.coordinates.lat, shop.coordinates.lng),
         color: shopColor(shop),
         strokeColor: shopStrokeColor(shop),
-        selected: this.selectedShop && this.selectedShop.id === shop.id,
         shop,
       }))
     },
@@ -239,3 +244,8 @@ export default {
   },
 }
 </script>
+
+<style>
+@import 'leaflet.markercluster/dist/MarkerCluster.css';
+@import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+</style>
