@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^2.6.0",
+    "@gridsome/plugin-google-analytics": "^0.1.1",
     "@gridsome/plugin-sitemap": "^0.2.3",
     "cache-manager": "^3.2.1",
     "cache-manager-fs": "^1.0.8",

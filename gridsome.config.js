@@ -47,5 +47,11 @@ module.exports = {
         svgo: [{ removeViewBox: false }],
       },
     },
+    {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: 'UA-87349486-2',
+      },
+    },
   ],
 }
