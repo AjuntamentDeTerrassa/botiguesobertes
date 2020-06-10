@@ -23,7 +23,7 @@ jobs:
         id: geocoder-cache
         uses: actions/cache@v1
         with:
-          path: .geocoder-cache
+          path: .geocoder-cache-zip
           key: ${{ runner.os }}-geocoder-cache
       - name: Install dependencies
         run: |
@@ -31,7 +31,8 @@ jobs:
       - name: Build
         env:
           BASE_DIR: '/'
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_GEOCODING_API_KEY: ${{ secrets.GOOGLE_GEOCODING_API_KEY }}
+          GOOGLE_SHEETS_API_KEY: ${{ secrets.GOOGLE_SHEETS_API_KEY }}
           SHEET_ID: ${{ secrets.SHEET_ID }}
         run: |
           npm run build

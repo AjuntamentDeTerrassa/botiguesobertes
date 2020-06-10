@@ -60,7 +60,8 @@ class GoogleSheetSource {
   static defaultOptions() {
     return {
       sheetId: '',
-      apiKey: '',
+      sheetsKey: '',
+      mapsKey: '',
       type: 'googleSheet',
     }
   }
@@ -77,7 +78,7 @@ class GoogleSheetSource {
 
       const sheets = google.sheets({
         version: 'v4',
-        auth: this.options.apiKey,
+        auth: this.options.sheetsKey,
       })
 
       await sheets.spreadsheets.values
@@ -100,7 +101,8 @@ class GoogleSheetSource {
             store: fsStore,
             options: {
               path: options.cachePath,
-              ttl: 60 * 60 * 365,
+              ttl: 60 * 60 * 24 * 365,
+              zip: true,
               maxSize: 1000 * 1000 * 1000,
             },
           })
@@ -110,7 +112,7 @@ class GoogleSheetSource {
 
             let coordinates = await diskCache.wrap(
               address,
-              async () => await geocode(address, mapsClient, options.apiKey)
+              async () => await geocode(address, mapsClient, options.mapsKey)
             )
             value.coordinates = coordinates
 

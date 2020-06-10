@@ -12,4 +12,4 @@
   command = "npm run build"
 
 [build.environment]
-  CACHE_PATH = "/opt/build/cache/.geocoder-cache"
+  CACHE_PATH = "/opt/build/cache/.geocoder-cache-zip"

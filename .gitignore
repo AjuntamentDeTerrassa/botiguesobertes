@@ -6,4 +6,4 @@ node_modules
 dist
 .env
 .env.*
-.geocoder-cache
+.geocoder-cache-zip

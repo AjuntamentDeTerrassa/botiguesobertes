@@ -36,8 +36,9 @@ module.exports = {
       use: '~/plugins/google-sheets',
       options: {
         sheetId: process.env.SHEET_ID,
-        apiKey: process.env.GOOGLE_API_KEY,
-        cachePath: process.env.CACHE_PATH || '.geocoder-cache',
+        sheetsKey: process.env.GOOGLE_SHEETS_API_KEY,
+        mapsKey: process.env.GOOGLE_GEOCODING_API_KEY,
+        cachePath: process.env.CACHE_PATH || '.geocoder-cache-zip',
         type: 'shop',
       },
     },

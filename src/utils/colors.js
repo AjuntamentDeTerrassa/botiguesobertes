@@ -2,7 +2,7 @@ function openStateColor(openState) {
   return {
     YES: '#68D391',
     PARTIALLY: '#F6AD55',
-    NO: '#F687B3',
+    NO: '#F84244',
   }[openState]
 }
 
