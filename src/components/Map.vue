@@ -84,7 +84,6 @@
 import { mapState, mapGetters } from 'vuex'
 import ShopCard from './ShopCard'
 import { shopColor, shopStrokeColor } from '~/utils/colors.js'
-import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
 
 import Logo from '~/assets/logo-full.svg'
 
@@ -95,11 +94,13 @@ import FooterLinks from '~/components/FooterLinks'
 
 let VueLeaflet = {}
 let latLng, latLngBounds
+let Vue2LeafletMarkerCluster
 
 if (process.isClient) {
   latLng = require('leaflet').latLng
   latLngBounds = require('leaflet').latLngBounds
   VueLeaflet = require('vue2-leaflet')
+  Vue2LeafletMarkerCluster = require('vue2-leaflet-markercluster')
 }
 
 export default {
