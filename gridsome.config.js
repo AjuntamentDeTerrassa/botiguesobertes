@@ -38,7 +38,7 @@ module.exports = {
         sheetId: process.env.SHEET_ID,
         sheetsKey: process.env.GOOGLE_SHEETS_API_KEY,
         mapsKey: process.env.GOOGLE_GEOCODING_API_KEY,
-        cachePath: process.env.CACHE_PATH || '.geocoder-cache-zip',
+        cachePath: process.env.CACHE_PATH || '.geocoder-cache',
         type: 'shop',
       },
     },

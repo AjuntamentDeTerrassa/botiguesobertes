@@ -23,7 +23,7 @@ jobs:
         id: geocoder-cache
         uses: actions/cache@v1
         with:
-          path: .geocoder-cache-zip
+          path: .geocoder-cache
           key: ${{ runner.os }}-geocoder-cache
       - name: Install dependencies
         run: |

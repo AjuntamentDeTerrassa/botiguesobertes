@@ -1,9 +1,7 @@
 /* eslint-disable no-console */
 const { google } = require('googleapis')
 const { Client, Status } = require('@googlemaps/google-maps-services-js')
-
-var cacheManager = require('cache-manager')
-var fsStore = require('cache-manager-fs')
+const storage = require('node-persist')
 
 async function geocode(address, mapsClient, key) {
   console.log(`Geocoding ${address}...`)
@@ -97,23 +95,21 @@ class GoogleSheetSource {
               )
             )
           })
-          var diskCache = cacheManager.caching({
-            store: fsStore,
-            options: {
-              path: options.cachePath,
-              ttl: 60 * 60 * 24 * 365,
-              zip: true,
-              maxSize: 1000 * 1000 * 1000,
-            },
+
+          await storage.init({
+            dir: '.geocoder-cache',
           })
 
           for (const value of nodes) {
             let address = `${value.address}, ${value.postalCode}, ${value.city}, Spain`
+            console.log(`Looking for ${address}`)
 
-            let coordinates = await diskCache.wrap(
-              address,
-              async () => await geocode(address, mapsClient, options.mapsKey)
-            )
+            let coordinates = await storage.getItem(address)
+            if (!coordinates) {
+              coordinates = await geocode(address, mapsClient, options.mapsKey)
+              storage.setItem(address, coordinates)
+            }
+
             value.coordinates = coordinates
 
             contentType.addNode(value)
