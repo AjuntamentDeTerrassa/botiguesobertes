@@ -102,7 +102,6 @@ class GoogleSheetSource {
 
           for (const value of nodes) {
             let address = `${value.address}, ${value.postalCode}, ${value.city}, Spain`
-            console.log(`Looking for ${address}`)
 
             let coordinates = await storage.getItem(address)
             if (!coordinates) {
