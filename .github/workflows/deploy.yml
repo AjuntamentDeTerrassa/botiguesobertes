@@ -21,12 +21,20 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Get Time
+        id: time
+        uses: nanzm/get-time-action@v1.0
+        with:
+          timeZone: 8
+          format: 'YYYY-MM-DD-HH-mm-ss'
       - name: Cache Geocoder
         id: geocoder-cache
         uses: actions/cache@v1
         with:
           path: .geocoder-cache
-          key: ${{ runner.os }}-geocoder-cache
+          key: ${{ runner.os }}-geocoder-cache-${{ steps.time.outputs.time }}
+          restore-keys: |
+            ${{ runner.os }}-geocoder-cache-
       - name: Install dependencies
         run: |
           npm install
