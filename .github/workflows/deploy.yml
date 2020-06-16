@@ -29,7 +29,7 @@ jobs:
           format: 'YYYY-MM-DD-HH-mm-ss'
       - name: Cache Geocoder
         id: geocoder-cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: .geocoder-cache
           key: ${{ runner.os }}-geocoder-cache-${{ steps.time.outputs.time }}
