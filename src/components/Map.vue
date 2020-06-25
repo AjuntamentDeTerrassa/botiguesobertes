@@ -25,7 +25,10 @@
       </l-feature-group>
 
       <VMarkerCluster
-        :options="{ showCoverageOnHover: false, maxClusterRadius: 80 }"
+        :options="{
+          showCoverageOnHover: false,
+          maxClusterRadius: 60,
+        }"
       >
         <l-circle-marker
           v-for="marker in markers"

@@ -48,6 +48,9 @@
         display
         openState
         openConditions
+        url
+        whatsapp
+        openingHours
         ships
         shippingConditions
       }

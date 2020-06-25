@@ -24,8 +24,21 @@
           >
         </div>
       </div>
+      <div v-if="shop.whatsapp" class="pb-2" :class="{ hidden: !expanded }">
+        <a
+          class="text-green-600 hover:underline align-middle"
+          target="_blank"
+          :href="`https://wa.me/${shop.whatsapp}?text=Hola, voldria fer una comanda.`"
+        >
+          <WhatsAppIcon
+            class="inline fill-current mr-1"
+            style="width: 1.2em;"
+          />{{ shop.whatsapp }}
+          (comandes)
+        </a>
+      </div>
       <ul
-        v-if="shop.ships === 'YES'"
+        v-if="shop.ships === 'Si'"
         class="flex lg:flex pb-2 pt-1"
         :class="{ hidden: !expanded }"
       >
@@ -48,9 +61,16 @@
       :class="{ hidden: !expanded }"
     >
       <ul class="leading-relaxed">
+        <li v-if="shop.url">
+          <a
+            class="text-blue-500 hover:underline"
+            :href="shop.url"
+            target="_blank"
+            >{{ shop.url }}</a
+          >
+        </li>
         <li v-if="shop.phone">
           <a
-            v-if="shop.phone"
             class="text-blue-500 hover:underline"
             :href="`tel:${shop.phone}`"
             @click.stop
@@ -73,6 +93,7 @@
 
 <script>
 import Oval from './Oval'
+import WhatsAppIcon from '../assets/whatsapp.svg'
 import { mapState } from 'vuex'
 
 let latLng
@@ -82,7 +103,7 @@ if (process.isClient) {
 }
 
 export default {
-  components: { Oval },
+  components: { Oval, WhatsAppIcon },
   props: {
     shop: {
       type: Object,
@@ -97,7 +118,7 @@ export default {
   computed: {
     openText() {
       return {
-        YES: 'Horari habitual',
+        YES: this.shop.openingHours || 'Horari habitual',
         NO: 'Tancat',
         PARTIALLY: 'Amb alteracions',
       }[this.shop.openState]

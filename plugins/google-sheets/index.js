@@ -50,6 +50,10 @@ function normalizeShop(shop) {
     name: shop['Nom del teu comerç/establiment'],
     type: shop['Tipologia'],
     openState: stateMappings[shop['Tens obert?']],
+    openingHours: shop['Horari'],
+    url: shop['Pàgina web'],
+    whatsapp:
+      shop['Fas comandes a través de Whatsapp? Quin és el teu número?'] || '',
     openConditions: shop['En quines condicions?'],
   }
 }
