@@ -18,9 +18,9 @@
           <div class="sm:pl-40 lg:pl-48 pt-6">
             <div class="text-lg pt-2">
               A través d'aquest portal posem a la teva disposició la informació
-              relativa de totes les botigues i establiments de la nostra ciutat
-              perquè sàpigues els serveis que t'ofereixen a data d'avui per
-              comprar-hi de forma fàcil i ràpida.
+              relativa de totes les botigues, establiments, bars i restaurants
+              de la nostra ciutat perquè sàpigues els serveis que t'ofereixen a
+              data d'avui per comprar-hi de forma fàcil i ràpida.
             </div>
             <div class="text-lg py-4">
               Perquè les botigues de Terrassa
