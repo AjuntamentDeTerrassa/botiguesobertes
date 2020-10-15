@@ -13,7 +13,7 @@
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^3.1.2",
     "@gridsome/plugin-google-analytics": "^0.1.1",
-    "@gridsome/plugin-sitemap": "^0.3.0",
+    "@gridsome/plugin-sitemap": "^0.4.0",
     "googleapis": "^61.0.0",
     "gridsome": "^0.7.17",
     "leaflet": "^1.6.0",
