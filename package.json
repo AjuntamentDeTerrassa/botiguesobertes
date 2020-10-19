@@ -16,7 +16,7 @@
     "@gridsome/plugin-sitemap": "^0.4.0",
     "googleapis": "^61.0.0",
     "gridsome": "^0.7.21",
-    "leaflet": "^1.6.0",
+    "leaflet": "^1.7.1",
     "leaflet.markercluster": "^1.4.1",
     "material-design-icons": "^3.0.1",
     "minisearch": "^3.0.0",
