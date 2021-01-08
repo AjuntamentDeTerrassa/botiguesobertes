@@ -14,7 +14,7 @@
     "@googlemaps/google-maps-services-js": "^3.1.14",
     "@gridsome/plugin-google-analytics": "^0.1.2",
     "@gridsome/plugin-sitemap": "^0.4.0",
-    "googleapis": "^66.0.0",
+    "googleapis": "^67.0.0",
     "gridsome": "^0.7.23",
     "leaflet": "^1.7.1",
     "leaflet.markercluster": "^1.4.1",
