@@ -54,7 +54,7 @@
         :radius="currentPositionMarker.accuracy"
       />
     </l-map>
-    <div class="hidden lg:flex absolute right-0 top-0 z-50 m-4">
+    <div class="absolute top-0 right-0 z-50 hidden m-4 lg:flex">
       <Filters />
       <ZoomControls :max-zoom="maxZoom" :min-zoom="minZoom" :zoom="zoom" />
     </div>
@@ -63,17 +63,17 @@
       :max-zoom="maxZoom"
       :min-zoom="minZoom"
       :zoom="zoom"
-      class="absolute z-50 block lg:hidden bottom-0 right-0 m-4"
+      class="absolute bottom-0 right-0 z-50 block m-4 lg:hidden"
     />
 
-    <Filters class="absolute z-50 block lg:hidden top-0 right-0 m-4" />
+    <Filters class="absolute top-0 right-0 z-50 block m-4 lg:hidden" />
 
-    <div class="hidden lg:block absolute bottom-0 right-0 z-50 m-4">
+    <div class="absolute bottom-0 right-0 z-50 hidden m-4 lg:block">
       <MapToolbarControlGroup :separator="false">
         <FooterLinks />
         <a
           href="https://www.terrassa.cat"
-          class="flex items-center bg-red-600 text-white px-4 hover:bg-red-500 active:bg-red-600 transition-all duration-300"
+          class="flex items-center px-4 text-white transition-all duration-300 bg-red-600 hover:bg-red-500 active:bg-red-600"
           target="_blank"
         >
           <Logo height="1.2em" class="fill-current" width="5em" />
@@ -142,7 +142,7 @@ export default {
 
   computed: {
     markers() {
-      return this.shops.map((shop) => ({
+      return this.shops.filter(shop => shop.coordinates).map((shop) => ({
         id: shop.id,
         position: latLng(shop.coordinates.lat, shop.coordinates.lng),
         color: shopColor(shop),
