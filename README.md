@@ -1,5 +1,7 @@
 # Default starter for Gridsome
 
+[![Build and Deploy](https://github.com/AjuntamentDeTerrassa/botiguesobertes/actions/workflows/deploy.yml/badge.svg)](https://github.com/AjuntamentDeTerrassa/botiguesobertes/actions/workflows/deploy.yml)
+
 This is the project you get when you run `gridsome create new-project`.
 
 ### 1. Install Gridsome CLI tool if you don't have
